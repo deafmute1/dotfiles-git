@@ -1,0 +1,5 @@
+[credential]
+	helper = /usr/lib/git-core/git-credential-libsecret
+[user]
+	email = me@ethandjeric.com
+	name = def

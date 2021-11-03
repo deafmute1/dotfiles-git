@@ -1,0 +1,6 @@
+[Unit]
+Description=vdirsyncer 
+
+[Service]
+ExecStart=/usr/bin/vdirsyncer sync --max-workers=1 
+RuntimeMaxSec=600

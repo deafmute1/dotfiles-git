@@ -1,0 +1,27 @@
+[general]
+status_path = "~/.cache/vdirsyncer/status/"
+
+# Nextcloud calendar
+[pair cal_nc]
+a = "cal_nc_local"
+b = "cal_nc_remote"
+collections = ["from a", "from b"]
+metadata = ["displayname", "color"]
+conflict_resolution = "a wins"
+
+[storage cal_nc_remote]
+type = "caldav"
+url = "https://nextcloud.ayew.host/remote.php/dav/calendars/deafmute"
+username.fetch = ["command", "secret-tool", "lookup", "nextcloud", "username"]
+password.fetch = ["command", "secret-tool", "lookup", "nextcloud", "password"]
+
+[storage cal_nc_local]
+type = "filesystem"
+path = "~/.local/share/vdirsyncer/cal_nc/"
+fileext = ".ics"
+
+
+
+
+
+

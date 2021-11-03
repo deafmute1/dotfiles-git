@@ -1,0 +1,10 @@
+[Unit]
+Description=rbw
+
+[Timer] 
+Persistent=true
+OnBootSec=1min
+OnUnitActiveSec=60min
+
+[Install]
+WantedBy=timers.target 

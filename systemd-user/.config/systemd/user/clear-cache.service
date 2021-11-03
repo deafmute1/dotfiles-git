@@ -1,0 +1,6 @@
+[Unit]
+Description=clear various cache locations
+
+[Service]
+ExecStart=rm /home/ethan/.cache/screenshot/*
+RuntimeMaxSec=60

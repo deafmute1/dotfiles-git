@@ -1,0 +1,6 @@
+[Unit]
+Description=vdirsyncer metasync
+
+[Service]
+ExecStart=/usr/bin/rbw sync 
+RuntimeMaxSec=600

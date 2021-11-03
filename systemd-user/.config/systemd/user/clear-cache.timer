@@ -1,0 +1,9 @@
+[Unit]
+Description=clear various caches
+
+[Timer] 
+Persistent=true
+OnCalendar=weekly
+ 
+[Install]
+WantedBy=timers.target 
