@@ -1,0 +1,404 @@
+###############################################################################
+## Key Mappings
+###############################################################################
+
+# Meta Key - Alt key is Mod1, and Windows key is Mod4
+set $mod  Mod4
+set $alt  Mod1
+set $wallpaper ~/.config/sway/res/ign_animeGirlSleeping.png 
+
+###############################################################################
+# Workspace Keys
+# These are the keys which will be used while binding workspace switching
+###############################################################################
+
+set $ws1_key   1
+set $ws2_key   2
+set $ws3_key   3
+set $ws4_key   4
+set $ws5_key   5
+set $ws6_key   6
+set $ws7_key   7
+set $ws8_key   8
+set $ws9_key   9
+set $ws10_key  0
+
+# Sets i3 font for dialogs
+set $i3-wm.font pango:Iosevka Regular Nerd Font 12
+
+###############################################################################
+# Launcher dialogs
+###############################################################################
+
+## Launch // Application // <> Space ##
+bindsym $mod+Return exec rofi -show drun,run,emoji 
+
+## Navigate // Window by Name // <><Ctrl> Space ##
+bindsym $alt+Tab exec i3wins 
+
+## Launch // Clipboard viewer (rofi) // <> c ##
+bindsym $mod+c exec clipman pick -t rofi
+
+# password manager 
+bindsym $mod+p exec rofi-rbw --selector rofi --clipboarder wl-copy --typer wtype
+
+## Launch // Terminal // <><Return>  ##
+bindsym $mod+space exec /usr/bin/kitty 
+
+###############################################################################
+# Window and Workspace Navigation
+###############################################################################
+
+## Navigate // Relative Parent // <> p ##/
+bindsym $mod+a focus parent
+
+## Navigate // Relative Child // <> c ##/
+bindsym $mod+z focus child
+
+## Navigate // Relative Window // <> ↑ ↓ ← → ##
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+## Navigate // Relative Window // <> k j h l ##
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+## Navigate // Workspaces 1-10 // <> 0..9 ##
+bindsym $mod+$ws1_key workspace number 1
+bindsym $mod+$ws2_key workspace number 2
+bindsym $mod+$ws3_key workspace number 3
+bindsym $mod+$ws4_key workspace number 4
+bindsym $mod+$ws5_key workspace number 5
+bindsym $mod+$ws6_key workspace number 6
+bindsym $mod+$ws7_key workspace number 7
+bindsym $mod+$ws8_key workspace number 8
+bindsym $mod+$ws9_key workspace number 9
+bindsym $mod+$ws10_key workspace number 10
+
+## Navigate // Next Workspace // <> Tab ##
+bindsym $mod+Tab workspace next
+
+## Navigate // Previous Workspace // <><Shift> Tab ##
+bindsym $mod+Shift+Tab workspace prev
+
+## Navigate // Scratchpad // <><Ctrl> a ##
+bindsym $mod+Ctrl+a scratchpad show
+
+## Modify // Move to Scratchpad // <><Ctrl> m ##
+bindsym $mod+Ctrl+m move to scratchpad 
+
+## Modify // Window Position // <><Shift> ↑ ↓ ← → ##
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+## Modify // Window Position // <><Shift> k j h l ##
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+## Modify // Move workspace to output // <><Ctrl><Shift> ↑ ↓ ← → ##
+bindsym $mod+Ctrl+Left move workspace to output left
+bindsym $mod+Ctrl+Down move workspace to output down
+bindsym $mod+Ctrl+Up move workspace to output up
+bindsym $mod+Ctrl+Right move workspace to output right
+
+## Modify // Move Workspace to Output // <><Ctrl><Shift> k j h l ##
+bindsym $mod+Ctrl+h move workspace to output left
+bindsym $mod+Ctrl+j move workspace to output down
+bindsym $mod+Ctrl+k move workspace to output up
+bindsym $mod+Ctrl+l move workspace to output right
+
+## Modify // Vertical Window Orientation // <> v ##
+bindsym $mod+v split vertical
+
+## Modify // Horizontal Window Orientation // <> g ##
+bindsym $mod+g split horizontal
+
+## Modify // Toggle Window Orientation // <> Backspace ##
+bindsym $mod+BackSpace split toggle
+
+## Modify // Window Fullscreen Toggle // <> f ##
+bindsym $mod+f fullscreen toggle
+
+## Modify // Window Floating Toggle // <><Shift> f ##
+bindsym $mod+Shift+f floating toggle
+
+## Modify // Tile/Float Focus Toggle // <><Shift> t ##
+bindsym $mod+Shift+t focus mode_toggle
+
+## Modify // Window Layout Mode // <> t ##
+bindsym $mod+t layout toggle tabbed splith splitv
+
+## Modify // Move Window to Workspace 1 - 10 // <><Ctrl> 0..9 ##
+bindsym $mod+Shift+$ws1_key move container to workspace number 1
+bindsym $mod+Shift+$ws2_key move container to workspace number 2
+bindsym $mod+Shift+$ws3_key move container to workspace number 3
+bindsym $mod+Shift+$ws4_key move container to workspace number 4
+bindsym $mod+Shift+$ws5_key move container to workspace number 5
+bindsym $mod+Shift+$ws6_key move container to workspace number 6
+bindsym $mod+Shift+$ws7_key move container to workspace number 7
+bindsym $mod+Shift+$ws8_key move container to workspace number 8
+bindsym $mod+Shift+$ws9_key move container to workspace number 9
+bindsym $mod+Shift+$ws10_key move container to workspace number 10
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Hiding borders adjacent to the screen edges.
+# The "smart" setting hides borders on workspaces with only one window visible.
+hide_edge_borders smart
+
+workspace_auto_back_and_forth no
+
+###############################################################################
+# i3 Appearance and Behavior
+###############################################################################
+
+# Disable titlebar
+default_border pixel 1
+default_floating_border pixel 1
+
+# Specify the distance between windows in pixels. (i3-gaps)
+gaps inner 5
+gaps outer 0
+
+# Only enable gaps on a workspace when there is at least one container
+smart_gaps on
+
+# Enable popup during fullscreen
+popup_during_fullscreen smart 
+
+# window focus follows your mouse movements as the mouse crosses window borders
+focus_follows_mouse no
+
+###############################################################################
+# i3 Colors and Fonts
+###############################################################################
+
+# Create variables from Xresources for i3's look.
+set $focused.color.border "#2E3440"
+set $focused.color.background  "#434C5E"
+set $focused.color.text  "#EDEFF4"
+set $focused.color.indicator  "#81A1C1"
+set $focused.color.child_border "#3399ff"
+
+set $focused_inactive.color.border  "#2E3440"
+set $focused_inactive.color.background  "#3B4252"
+set $focused_inactive.color.text  "#D8DEE9"
+set $focused_inactive.color.indicator  "#3B4252"
+set $focused_inactive.color.child_border "#2E3440"
+
+set $unfocused.color.border "#2E2440"
+set $unfocused.color.background "#3B4252"
+set $unfocused.color.text  "#D8DEE9"
+set $unfocused.color.indicator  "#3B4252"
+set $unfocused.color.child_border  "#2E3440"
+
+set $urgent.color.border  "#2E3440"
+set $urgent.color.background  "#BF616A"
+set $urgent.color.text  "#ECEFF4"
+set $urgent.color.indicator  "#BF616A"
+set $urgent.color.child_border  "#2E3440"
+
+
+# Window Border color
+# class                 border                             background                         text                               indicator                          child_border
+client.focused          $focused.color.border              $focused.color.background          $focused.color.text                $focused.color.indicator           $focused.color.child_border
+client.focused_inactive $focused_inactive.color.border     $focused_inactive.color.background $focused_inactive.color.text       $focused_inactive.color.indicator  $focused_inactive.color.child_border
+client.unfocused        $unfocused.color.border            $unfocused.color.background        $unfocused.color.text              $unfocused.color.indicator         $unfocused.color.child_border
+client.urgent           $urgent.color.border               $urgent.color.background           $urgent.color.text                 $urgent.color.indicator            $urgent.color.child_border
+
+# Pulse Audio volume controls
+bindsym XF86AudioRaiseVolume exec ~/.config/sway/script/set-pulse-sinks.sh raise #increase sound volume
+bindsym Ctrl+F3 exec ~/.config/sway/script/set-pulse-sinks.sh raise
+
+bindsym XF86AudioLowerVolume exec  ~/.config/sway/script/set-pulse-sinks.sh lower #decrease sound volume
+bindsym Ctrl+F2 exec ~/.config/sway/script/set-pulse-sinks.sh lower 
+
+bindsym XF86AudioMute exec ~/.config/sway/script/set-pulse-sinks.sh mute # mute sound
+bindsym Ctrl+F1 exec ~/.config/sway/script/set-pulse-sinks.sh mute  
+
+bindsym XF86AudioMicMute exec ~/.config/sway/script/toggle-pulse-outputs.sh 
+bindsym Ctrl+F4 exec ~/.config/sway/script/toggle-pulse-outputs.sh 
+
+# Pulse Media player controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym Shift+F1 exec playerctl play-pause 
+
+bindsym XF86AudioNext exec playerctl next
+bindsym Shift+F3 exec playerctl next
+
+bindsym XF86AudioPrev exec playerctl previous
+bindsym Shift+F2 exec playerctl previous
+
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec sudo light -s sysfs/backlight/amdgpu_bl0 -A 10 # increase screen brightness
+bindsym Ctrl+F6 exec sudo light -s sysfs/backlight/amdgpu_bl0 -A 10 # increase screen brightness
+
+bindsym XF86MonBrightnessDown exec sudo light -s sysfs/backlight/amdgpu_bl0 -U 10 ## decrease screen brightness
+bindsym Ctrl+F5 exec sudo light -s sysfs/backlight/amdgpu_bl0 -U 10 ## decrease screen brightness
+
+#close window
+bindsym $mod+Shift+q [con_id="__focused__"] kill 
+
+# modes
+mode "Screenshot" {
+	# take screenshot and send to clipboard
+	bindsym s exec grim -g "$(slurp)" - -t png | wl-copy; mode "default";   
+	
+	#take screenshot and pass to swappy UI
+	bindsym e exec grim -g "$(slurp)" - -t png | swappy -f - -o - | wl-copy; mode "default" 
+
+	#above, then  upload to up.ayew.host
+	bindsym u exec ~/.config/sway/script/screenshot-up.sh; mode "default" 
+
+	bindsym $mod+Shift+s mode "default"
+	bindsym Escape mode "default"
+	bindsym Return mode "default"
+}
+# this is what the prnscr button on ideapad slim5 pro emits, thanks lenovo
+bindsym $mod+Shift+s mode "Screenshot" 
+
+## Resize // Enter Resize Mode // <> r ##
+mode "Resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        ## Resize // Resize Window // ↑ ↓ ← → ##
+        bindsym Left resize shrink width 6 px or 6 ppt
+        bindsym Down resize grow height 6 px or 6 ppt
+        bindsym Up resize shrink height 6 px or 6 ppt
+        bindsym Right resize grow width 6 px or 6 ppt
+
+        ## Resize // Resize Window // k j h l ##
+        bindsym h resize shrink width 6 px or 6 ppt
+        bindsym k grow height 6 px or 6 ppt
+        bindsym j resize shrink height 6 px or 6 ppt
+        bindsym l resize grow width 6 px or 6 ppt
+
+        ## Resize // Window Gaps // + - ##
+        bindsym Minus gaps inner current minus 6
+        bindsym Plus gaps inner current plus 6
+        bindsym Shift+Minus gaps inner current minus 12
+        bindsym Shift+Plus inner current plus 12
+
+        ## Resize // Exit Resize Mode // Escape or Enter ##
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "Resize"
+
+
+mode "Session" { 
+  bindsym s exec systemctl suspend 
+
+  bindsym l exec loginctl lock-session 
+
+  #reboot 
+  bindsym r exec systemctl reboot 
+
+  #shutdown 
+  bindsym p exec systemctl poweroff 
+
+  # Exit 
+  bindsym Escape mode "default"
+  bindsym $mod+Ctrl+s "default"
+}
+bindsym $mod+Ctrl+s mode "Session" 
+
+mode "Swap" {
+    # switch to workspace
+    bindsym $mod+1 workspace 1
+    bindsym $mod+2 workspace 2
+    bindsym $mod+3 workspace 3
+    bindsym $mod+4 workspace 4
+    bindsym $mod+5 workspace 5
+    bindsym $mod+6 workspace 6
+    bindsym $mod+7 workspace 7
+    bindsym $mod+8 workspace 8
+    bindsym $mod+9 workspace 9
+    bindsym $mod+0 workspace 10
+
+    # change focus
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+    # change focus (without mod)
+    bindsym Left focus left
+    bindsym Down focus down
+    bindsym Up focus up
+    bindsym Right focus right
+
+    bindsym Return swap container with mark "swapee"; unmark "swapee"; mode "default";
+    bindsym Escape unmark "swapee"; mode "default";
+    bindsym $mod+s unmark "swapee"; mode "default"; 
+}
+bindsym $mod+s mark --add "swapee"; mode "Swap"
+
+
+# Add border to focused window
+smart_borders on 
+for_window [class="^.*"] border pixel 3
+
+
+for_window [app_id="thunderbird"] move to workspace number 1 
+for_window [app_id="firefox"] move to workspace number 2
+for_window [class="discord"] move to workspace 10 
+for_window [class="Signal"] move to workspace 10
+for_window [class="Caprine"] move to workspace 10
+
+# start floating: 
+for_window [title="Android Emulator.*"] floating enable  
+for_window [app_id="pavucontrol"] floating enable 
+for_window [title=".*Reminders" app_id="thunderbird"] floating enable
+
+bar {
+    swaybar_command waybar
+}
+
+## STARTUP SCRIPT BELOW 
+# see https://github.com/swaywm/sway/issues/5732 
+# Also fixes a dbus issue for gnome-keyring
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
+# start gnome keyring and setup 
+# eval is used to put SSH_AUTH_SOCK into shell env.
+exec eval $(gnome-keyring-daemon --start --components=pkcs11 --components=secrets --components=ssh) && \
+     systemctl --user import-environment SSH_AUTH_SOCK
+
+# Start daemon style services  first 
+exec --no-startup-id setsid /usr/bin/mako & # notification daemon: needs to start before any services which could use it 
+exec --no-startup-id setsid /usr/bin/kanshi & # output config switcher (for dock) 
+exec --no-startup-id setsid wl-paste -t text --watch clipman store # clip daemon 
+exec --no-startup-id setsid wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json # clip daemon 
+exec --no-startup-id setsid swayidle -w timeout 300 'loginctl lock-session' timeout 600 'systemctl suspend' before-sleep 'swaylock -f -i $wallpaper' lock 'swaylock -f -i $wallpaper' & 
+exec --no-startup-id setsid /usr/bin/swaybg -i $wallpaper -m fill & # bg daemon  
+exec --no-startup-id setsid /usr/bin/mopidy &
+exec --no-startup-id setsid /usr/bin/nm-applet --indicator & # network manager (tray)  
+exec --no-startup-id setsid env XDG_CURRENT_DESKTOP=Unity /usr/bin/blueman-applet & # blueman (tray) 
+exec --no-startup-id setsid sleep 5 && /usr/bin/vorta -d & # vorta borg backup client 
+# sleep is required here or the systray icon fails to appear
+exec --no-startup-id setsid sleep 5 && /usr/bin/nextcloud --background & # nextcloud (tray) 
+exec --no-startup-id setsid /usr/bin/mpd_discord_richpresence --no-idle &
+exec --no-startup-id setsid /usr/bin/udiskie --tray --appindicator & 
+
+# start regular guis 
+exec --no-startup-id setsid /usr/bin/thunderbird &
+exec --no-startup-id setsid /usr/bin/firefox & 
+exec --no-startup-id setsid /usr/bin/discord & 
+exec --no-startup-id setsid /usr/bin/caprine & 
+
+# Turn off wireguard 
+exec nmcli connection down motoko-wg

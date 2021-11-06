@@ -1,0 +1,14 @@
+# Reload: antibody bundle < ~/.config/zsh/antibody > ~/.config/zsh/70_plugins.zsh
+romkatv/powerlevel10k 
+#junegunn/fzf path:shell/key-bindings.zsh 
+#junegunn/fzf path:shell/completion.zsh 
+
+Aloxaf/fzf-tab 
+#marlonrichert/zsh-autocomplete
+zsh-users/zsh-completions
+zdharma/fast-syntax-highlighting
+#jeffreytse/zsh-vi-mode 
+ohmyzsh/ohmyzsh path:plugins/gitignore
+ohmyzsh/ohmyzsh path:plugins/command-not-found
+theunraveler/zsh-fancy_ctrl_z
+zsh-users/zsh-history-substring-search

@@ -1,0 +1,12 @@
+
+profile docked { 
+  output eDP-1 disable
+  output "Dell Inc. DELL S2721DGF 2TB8S83" mode 2560x1440@59.951Hz position 0,0 
+  output "Unknown Q27G2SG4B+ OGJLCHA004519" mode 2560x1440@59.951Hz position 2560,0 
+}
+
+profile laptop { 
+  output eDP-1 enable mode 2240x1400@60.002Hz position 0,0 scale 1.24 
+}
+
+

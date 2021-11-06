@@ -1,0 +1,6 @@
+# This group allows normal users to root escalate. 
+# Arch provides a `wheel` group by default; most distros now user `sudoers`
+%wheel ALL=(ALL) ALL
+ 
+#allow access to backlight for hotkeying in WM. 
+%wheel ALL=(ALL) NOPASSWD: /usr/bin/light

@@ -1,0 +1,11 @@
+configuration {
+  theme: "nord";
+  sidebar-mode: true;
+  font: "Iosevka Nerd Font 14";
+  terminal: "/usr/bin/kitty";
+  icon-theme: "Moka"; 
+  modi: "drun,run,emoji";
+  run-list-command: ". ~/.config/zsh/40_aliases.zsh; . ~/.config/zsh/50_functions.zsh; export PATH=~/.local/bin:$PATH"; 
+  run-command: "/bin/zsh -i -c '{cmd}'";
+  show-icons: true;
+}
