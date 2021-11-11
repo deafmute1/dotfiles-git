@@ -5,7 +5,6 @@
 # Meta Key - Alt key is Mod1, and Windows key is Mod4
 set $mod  Mod4
 set $alt  Mod1
-set $wallpaper ~/.config/sway/res/ign_animeGirlSleeping.png 
 
 ###############################################################################
 # Workspace Keys
@@ -366,39 +365,32 @@ bar {
     swaybar_command waybar
 }
 
-## STARTUP SCRIPT BELOW 
-# see https://github.com/swaywm/sway/issues/5732 
-# Also fixes a dbus issue for gnome-keyring
-exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
-exec hash dbus-update-activation-environment 2>/dev/null && \
-     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
-
-# start gnome keyring and setup 
-# eval is used to put SSH_AUTH_SOCK into shell env.
-exec eval $(gnome-keyring-daemon --start --components=pkcs11 --components=secrets --components=ssh) && \
+## STARTUP SCRIPT BELOW
+# setup Wayland environment
+include /etc/sway/config.d/*
+# init keyring and export SSH_AUTH_SOCK 
+exec eval $(gnome-keyring-daemon --start) && \
      systemctl --user import-environment SSH_AUTH_SOCK
 
-# Start daemon style services  first 
+# Autostart
+# Sway session dependant daemons 
 exec --no-startup-id setsid /usr/bin/mako & # notification daemon: needs to start before any services which could use it 
 exec --no-startup-id setsid /usr/bin/kanshi & # output config switcher (for dock) 
 exec --no-startup-id setsid wl-paste -t text --watch clipman store # clip daemon 
 exec --no-startup-id setsid wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json # clip daemon 
-exec --no-startup-id setsid swayidle -w timeout 300 'loginctl lock-session' timeout 600 'systemctl suspend' before-sleep 'swaylock -f -i $wallpaper' lock 'swaylock -f -i $wallpaper' & 
-exec --no-startup-id setsid /usr/bin/swaybg -i $wallpaper -m fill & # bg daemon  
-exec --no-startup-id setsid /usr/bin/mopidy &
+exec --no-startup-id setsid swayidle -w timeout 300 'loginctl lock-session' timeout 600 'systemctl suspend' before-sleep 'swaylock -f -i $USER_WALLPAPER' lock 'swaylock -f -i $USER_WALLPAPER' & 
+exec --no-startup-id setsid /usr/bin/swaybg -i $USER_WALLPAPER -m fill & # bg daemon  
+
+# Start daemon style services with GUI components (tray apps)   
 exec --no-startup-id setsid /usr/bin/nm-applet --indicator & # network manager (tray)  
 exec --no-startup-id setsid env XDG_CURRENT_DESKTOP=Unity /usr/bin/blueman-applet & # blueman (tray) 
+# Sleep is required here otherwise these fail to attach to waybar (i.e. no tray icon)
 exec --no-startup-id setsid sleep 5 && /usr/bin/vorta -d & # vorta borg backup client 
-# sleep is required here or the systray icon fails to appear
 exec --no-startup-id setsid sleep 5 && /usr/bin/nextcloud --background & # nextcloud (tray) 
-exec --no-startup-id setsid /usr/bin/mpd_discord_richpresence --no-idle &
 exec --no-startup-id setsid /usr/bin/udiskie --tray --appindicator & 
 
-# start regular guis 
+# Start full GUIs 
 exec --no-startup-id setsid /usr/bin/thunderbird &
 exec --no-startup-id setsid /usr/bin/firefox & 
 exec --no-startup-id setsid /usr/bin/discord & 
 exec --no-startup-id setsid /usr/bin/caprine & 
-
-# Turn off wireguard 
-exec nmcli connection down motoko-wg

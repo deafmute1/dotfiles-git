@@ -6,7 +6,7 @@ profile docked {
 }
 
 profile laptop { 
-  output eDP-1 enable mode 2240x1400@60.002Hz position 0,0 scale 1.24 
+  output eDP-1 enable mode 2240x1400@60.002Hz position 0,0 scale 1.27 
 }
 
 

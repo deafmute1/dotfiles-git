@@ -8,4 +8,5 @@ GDK_BACKEND=wayland,x11
 _JAVA_AWT_WM_NONREPARENTING=1
 STUDIO_JDK=/usr/lib/jvm/default 
 JAVA_HOME=/usr/lib/jvm/default
+USER_WALLPAPER DEFAULT=@{HOME}/.config/sway/res/ign_animeGirlSleeping.png
 GPODDER_HOME=.local/share/gpodder
