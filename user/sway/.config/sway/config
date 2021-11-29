@@ -260,11 +260,13 @@ mode "Screenshot" {
 	bindsym u exec ~/.config/sway/script/screenshot-up.sh; mode "default" 
 
 	bindsym $mod+Shift+s mode "default"
+	bindsym Print mode "default" 
 	bindsym Escape mode "default"
 	bindsym Return mode "default"
 }
 # this is what the prnscr button on ideapad slim5 pro emits, thanks lenovo
 bindsym $mod+Shift+s mode "Screenshot" 
+bindsym Print mode "Screenshot" 
 
 ## Resize // Enter Resize Mode // <> r ##
 mode "Resize" {
@@ -363,6 +365,13 @@ for_window [title=".*Reminders" app_id="thunderbird"] floating enable
 
 bar {
     swaybar_command waybar
+}
+
+input pointer accel_profile flat
+
+input keyboard {
+	repeat_delay 190 
+	repeat_rate 20
 }
 
 ## STARTUP SCRIPT BELOW
