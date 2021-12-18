@@ -1,5 +1,4 @@
 configuration {
-  theme: "nord";
   sidebar-mode: true;
   font: "Iosevka Nerd Font 14";
   terminal: "/usr/bin/kitty";
@@ -9,3 +8,4 @@ configuration {
   run-command: "/bin/zsh -i -c '{cmd}'";
   show-icons: true;
 }
+@theme "nord"
