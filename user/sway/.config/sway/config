@@ -402,4 +402,6 @@ exec --no-startup-id setsid /usr/bin/udiskie --tray --appindicator &
 exec --no-startup-id setsid /usr/bin/thunderbird &
 exec --no-startup-id setsid /usr/bin/firefox & 
 exec --no-startup-id setsid /usr/bin/discord & 
-exec --no-startup-id setsid /usr/bin/caprine & 
+exec --no-startup-id setsid /usr/bin/caprine &
+
+exec systemctl --user restart mopidy

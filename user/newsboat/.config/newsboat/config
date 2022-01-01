@@ -1,0 +1,7 @@
+include /usr/share/doc/newsboat/contrib/colorschemes/nord
+auto-reload yes
+browser firefox 
+urls-source "miniflux"
+miniflux-url "https://rss.ayew.host/"
+miniflux-login "deafmute"
+miniflux-passwordeval "secret-tool lookup service newsboat remote miniflux.ayew.host"
