@@ -396,12 +396,10 @@ exec --no-startup-id setsid env XDG_CURRENT_DESKTOP=Unity /usr/bin/blueman-apple
 # Sleep is required here otherwise these fail to attach to waybar (i.e. no tray icon)
 exec --no-startup-id setsid sleep 5 && /usr/bin/vorta -d & # vorta borg backup client 
 exec --no-startup-id setsid sleep 5 && /usr/bin/nextcloud --background & # nextcloud (tray) 
-exec --no-startup-id setsid /usr/bin/udiskie --tray --appindicator & 
 
 # Start full GUIs 
 exec --no-startup-id setsid /usr/bin/thunderbird &
 exec --no-startup-id setsid /usr/bin/firefox & 
 exec --no-startup-id setsid /usr/bin/discord & 
-exec --no-startup-id setsid /usr/bin/caprine &
 
 exec systemctl --user restart mopidy
