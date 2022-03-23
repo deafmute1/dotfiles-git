@@ -214,7 +214,7 @@ client.focused_inactive $focused_inactive.color.border     $focused_inactive.col
 client.unfocused        $unfocused.color.border            $unfocused.color.background        $unfocused.color.text              $unfocused.color.indicator         $unfocused.color.child_border
 client.urgent           $urgent.color.border               $urgent.color.background           $urgent.color.text                 $urgent.color.indicator            $urgent.color.child_border
 
-# Pulse Audio volume controls
+#m Pulse Audio volume controls
 bindsym XF86AudioRaiseVolume exec ~/.config/sway/script/set-pulse-sinks.sh raise #increase sound volume
 bindsym Ctrl+F3 exec ~/.config/sway/script/set-pulse-sinks.sh raise
 
@@ -354,6 +354,8 @@ for_window [class="^.*"] border pixel 3
 
 for_window [app_id="thunderbird"] move to workspace number 1 
 for_window [app_id="firefox"] move to workspace number 2
+for_window [class="notion-app-enhanced"] move to workspace number 3
+for_window [class="Plexamp"] move to workspace number 9
 for_window [class="discord"] move to workspace 10 
 for_window [class="Signal"] move to workspace 10
 for_window [class="Caprine"] move to workspace 10
@@ -401,5 +403,6 @@ exec --no-startup-id setsid sleep 5 && /usr/bin/nextcloud --background & # nextc
 exec --no-startup-id setsid /usr/bin/thunderbird &
 exec --no-startup-id setsid /usr/bin/firefox & 
 exec --no-startup-id setsid /usr/bin/discord & 
+exec --no-startup-id setsid /usr/bin/notion-app-enhanced &
 
 exec systemctl --user restart mopidy
